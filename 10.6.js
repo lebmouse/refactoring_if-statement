@@ -1,5 +1,6 @@
 class Customer {
   applyDiscount(aNumber) {
-    return this.discount ? aNumber - this.discountRate * aNumber : aNumber;
+    if (!this.discountRate) return aNumber;
+    else return aNumber - this.discountRate * aNumber;
   }
 }
