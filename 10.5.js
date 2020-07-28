@@ -8,7 +8,9 @@ class Site {
 }
 
 class Customer {
-  get name() {}
+  get name() {
+    return "거주자";
+  }
   get billingPlan() {}
   get paymentHistory() {}
   get isUnknown() {
@@ -32,9 +34,7 @@ function isUnkown(arg) {
 // 1
 const aCustomer = new Site().customer;
 //.. 수 많은 코드
-let customerName = "";
-if (isUnkown(aCustomer)) customerName = "거주자";
-else customerName = aCustomer.name;
+const customerName = aCustomer.name;
 
 // 2
 const plan = isUnkown(aCustomer)
