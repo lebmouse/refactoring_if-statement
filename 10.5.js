@@ -22,6 +22,10 @@ class UnkownCustomer {
   get isUnknown() {
     return false;
   }
+  get billingPlan() {
+    return registry.billingPlan.basic;
+  }
+  set billingPlan(arg) {}
 }
 
 function isUnkown(arg) {
@@ -37,12 +41,10 @@ const aCustomer = new Site().customer;
 const customerName = aCustomer.name;
 
 // 2
-const plan = isUnkown(aCustomer)
-  ? registry.billingPlan.basic
-  : aCustomer.billingPlan;
+const plan = aCustomer.billingPlan;
 
 // 3
-if (!isUnkown(aCustomer)) aCustomer.billingPlan = newPlan;
+aCustomer.billingPlan = newPlan;
 
 const weeksDelinquent = isUnkown(aCustomer)
   ? 0
