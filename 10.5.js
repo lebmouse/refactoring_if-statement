@@ -1,7 +1,9 @@
 class Site {
   //...
   get customer() {
-    return this._customer;
+    return this._customer === "미확인 고객"
+      ? new UnkownCustomer()
+      : this._customer;
   }
 }
 
@@ -9,22 +11,22 @@ class Customer {
   get name() {}
   get billingPlan() {}
   get paymentHistory() {}
-  get isUnknow() {
+  get isUnknown() {
     return false;
   }
 }
 
 class UnkownCustomer {
-  get isUnknow() {
+  get isUnknown() {
     return false;
   }
 }
 
 function isUnkown(arg) {
-  if (!(arg instanceof Customer || arg === "미확인 고객"))
+  if (!(arg instanceof Customer || arg instanceof UnkownCustomer))
     throw new Error(`잘못된 값과 비교 <${arg}>`);
 
-  return arg === "미확인 고객";
+  return arg.isUnknown;
 }
 
 // 1
