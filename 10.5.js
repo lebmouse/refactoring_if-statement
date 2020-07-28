@@ -9,13 +9,18 @@ class Customer {
   get name() {}
   get billingPlan() {}
   get paymentHistory() {}
+  get isUnknow() { return false};
+}
+
+class UnkownCustomer {
+  get isUnknow() { return false};
 }
 
 // 1
 const aCustomer = site.customer;
 //.. 수 많은 코드
 let customerName;
-if(aCustomer === "미확인 고객") customerName = "거주자";
+if (aCustomer === "미확인 고객") customerName = "거주자";
 else customerName = aCustomer.name;
 
 // 2
